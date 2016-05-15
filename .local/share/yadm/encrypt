@@ -1,0 +1,4 @@
+.config/ssh/*
+.config/gnupg/private-keys*/*
+.config/gnupg/pubring.*
+.config/gnupg/trustdb.*
