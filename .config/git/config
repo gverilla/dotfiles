@@ -1,0 +1,34 @@
+[core]
+  autocrlf = input
+  editor = nvim
+
+[alias]
+  st  = status -sb
+  ci  = commit -v
+  co  = checkout
+  ls  = log --date=short --pretty=ls
+
+[pretty]
+  ls = format:%C(cyan)%h %C(red)%ad %C(blue)[%an]%C(auto)%d %C(white)%s
+
+[diff]
+  tool = vimdiff
+  algorithm = patience
+
+[apply]
+    whitespace = strip
+
+[color]
+  ui = true
+
+[rebase]
+  autosquash = true
+
+[push]
+  default = upstream
+
+[url "git@github.com:"]
+  insteadOf = gh:
+
+[include]
+  path = user
