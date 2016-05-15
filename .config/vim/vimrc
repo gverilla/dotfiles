@@ -1,0 +1,73 @@
+let &rtp.=",$XDG_CONFIG_HOME/vim"
+set viminfo="$XDG_CACHE_HOME/viminfo"
+
+call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
+  " Make sure you use single quotes
+  Plug 'tpope/vim-sensible'
+  Plug 'nathanaelkane/vim-indent-guides'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'tpope/vim-surround'
+  Plug 'mhinz/vim-signify'
+  Plug 'sheerun/vim-polyglot'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'junegunn/goyo.vim'
+  Plug 'edkolev/tmuxline.vim'
+  Plug 'chrisbra/SudoEdit.vim'
+  Plug 'morhetz/gruvbox'
+call plug#end()
+
+syntax on
+set number
+set nobackup
+set nowritebackup
+set background=dark
+colorscheme gruvbox
+
+" sane tab settings
+set expandtab
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+let g:airline_theme = "gruvbox"
+
+" Goyo
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+
+  if has('gui_running')
+    set fullscreen
+    set background=light
+    set linespace=7
+  elseif exists('$TMUX')
+    silent !tmux set status off
+  endif
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+
+  if has('gui_running')
+    set nofullscreen
+    set background=dark
+    set linespace=0
+  elseif exists('$TMUX')
+    silent !tmux set status on
+  endif
+endfunction
+
+autocmd User GoyoEnter nested call <SID>goyo_enter()
+autocmd User GoyoLeave nested call <SID>goyo_leave()
