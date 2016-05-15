@@ -1,0 +1,22 @@
+#include "current.colors"
+
+*background:  bg
+*foreground:  fg
+*cursorColor: bblk
+
+*color0:      blk
+*color8:      bblk
+*color1:      dred
+*color9:      red
+*color2:      dgrn
+*color10:     grn
+*color3:      dylw
+*color11:     ylw
+*color4:      dblu
+*color12:     blu
+*color5:      dmag
+*color13:     mag
+*color6:      dcyn
+*color14:     cyn
+*color7:      dwht
+*color15:     wht

@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+echo "Executing on $(date)" >> $XDG_DATA_HOME/i3/i3.log
+exec i3 >> $XDG_DATA_HOME/i3/i3.log

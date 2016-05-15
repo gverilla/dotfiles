@@ -1,0 +1,22 @@
+#include "current.colors"
+
+rofi.font:            Hack 13
+rofi.terminal:        termite
+rofi.show:            run
+rofi.modi:            run,window
+rofi.lines:           5
+rofi.columns:         1
+rofi.eh:              1
+rofi.location:        2
+rofi.width:           40
+rofi.padding:         16
+rofi.sidebar-mode:    true
+rofi.separator-style: dash
+rofi.hide-scrollbar:  true
+rofi.auto-select:     true
+rofi.color-enabled:   true
+
+rofi.color-normal: bg, fg, bg, bg, ylw
+rofi.color-urgent: bg, fg, bg, bg, ylw
+rofi.color-active: bg, fg, bg, bg, ylw
+rofi.color-window: bg, bblk, bblk

@@ -1,0 +1,46 @@
+general {
+    output_format = i3bar
+    interval = 5
+    colors = true
+    color_bad = "#fb4934"
+    color_degraded = "#fabd2f"
+    color_good = "#b8bb26"
+}
+
+order += "volume master"
+order += "wireless wlp4s0"
+order += "path_exists VPN"
+order += "battery 0"
+order += "time"
+order += "xrandr"
+
+volume master {
+    format = "  %volume"
+    format_muted = "  %volume"
+}
+
+wireless wlp4s0 {
+    format_up = "  %essid"
+    format_down = "  none"
+}
+
+path_exists VPN {
+    path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+battery 0 {
+    format = "  %percentage %remaining"
+    integer_battery_capacity = true
+    threshold_type = "percentage"
+    low_threshold = 10
+}
+
+time {
+    format = "  %Y-%m-%d %H:%M"
+}
+
+xrandr {
+    force_on_start = "LVDS1+VGA1"
+    VGA1_pos = "right-of LVDS1"
+    fallback = "LVDS1=VGA1"
+}

@@ -1,0 +1,118 @@
+# Keys
+set $mod   Mod4
+set $up    Up
+set $down  Down
+set $left  Left
+set $right Right
+floating_modifier $mod
+
+# Theme
+font pango:Hack 12
+new_window pixel 2
+gaps inner 20
+
+                        #border backgr. text    indicator
+client.focused          #458588 #458588 #32302f #ebdbb2
+client.unfocused        #83a598 #83a598 #32302f #83a598
+client.focused_inactive #83a598 #83a598 #32302f #83a598
+client.urgent           #fb4934 #fb4934 #32302f #fb4934
+
+# Keybindings
+bindsym $mod+Return           exec termite -e "tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+bindsym $mod+d                exec rofi -show run
+bindsym $mod+n                exec thunar
+bindsym $mod+l                exec i3lock-fancy -p
+bindsym Mod1+Shift+e          exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+q                kill
+bindsym $mod+Shift+c          reload
+bindsym $mod+Shift+r          restart
+bindsym $mod+$left            focus left
+bindsym $mod+$down            focus down
+bindsym $mod+$up              focus up
+bindsym $mod+$right           focus right
+bindsym $mod+Shift+$left      move left
+bindsym $mod+Shift+$down      move down
+bindsym $mod+Shift+$up        move up
+bindsym $mod+Shift+$right     move right
+bindsym $mod+h                split h
+bindsym $mod+v                split v
+bindsym $mod+f                fullscreen toggle
+bindsym $mod+s                layout stacking
+bindsym $mod+w                layout tabbed
+bindsym $mod+e                layout toggle split
+bindsym $mod+Shift+space      floating toggle
+bindsym $mod+space            focus mode_toggle
+bindsym $mod+a                focus parent
+bindsym $mod+Shift+a          focus child
+bindsym $mod+1                workspace 1
+bindsym $mod+2                workspace 2
+bindsym $mod+3                workspace 3
+bindsym $mod+4                workspace 4
+bindsym $mod+5                workspace 5
+bindsym $mod+6                workspace 6
+bindsym $mod+7                workspace 7
+bindsym $mod+8                workspace 8
+bindsym $mod+9                workspace 9
+bindsym $mod+0                workspace 10
+bindsym $mod+Shift+1          move container to workspace 1
+bindsym $mod+Shift+2          move container to workspace 2
+bindsym $mod+Shift+3          move container to workspace 3
+bindsym $mod+Shift+4          move container to workspace 4
+bindsym $mod+Shift+5          move container to workspace 5
+bindsym $mod+Shift+6          move container to workspace 6
+bindsym $mod+Shift+7          move container to workspace 7
+bindsym $mod+Shift+8          move container to workspace 8
+bindsym $mod+Shift+9          move container to workspace 9
+bindsym $mod+Shift+0          move container to workspace 10
+bindsym XF86AudioRaiseVolume  exec --no-startup-id "amixer -q set Master 2%+ unmute && pkill -USR1 py3status"
+bindsym XF86AudioLowerVolume  exec --no-startup-id "amixer -q set Master 2%- && pkill -USR1 py3status"
+bindsym XF86AudioMute         exec --no-startup-id "amixer -q set Master toggle && pkill -USR1 py3status"
+bindsym XF86AudioPlay         exec --no-startup-id mpc -q toggle
+bindsym XF86AudioStop         exec --no-startup-id mpc -q stop
+bindsym XF86AudioNext         exec --no-startup-id mpc -q next
+bindsym XF86AudioPrev         exec --no-startup-id mpc -q prev
+bindsym XF86MonBrightnessUp   exec --no-startup-id xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5
+bindsym $mod+t                exec --no-startup-id touchpad_toggle
+
+# Resize mode
+bindsym $mod+r mode "resize"
+mode "resize" {
+    bindsym $left  resize shrink width 20 px or 2 ppt
+    bindsym $down  resize grow height 20 px or 2 ppt
+    bindsym $up    resize shrink height 20 px or 2 ppt
+    bindsym $right resize grow width 20 px or 2 ppt
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+# Bar
+bar {
+    position top
+    status_command py3status -c $XDG_CONFIG_HOME/py3status/config -i $(pacman -Qlq py3status | grep py3status/modules | head -n 1)
+    separator_symbol ""
+
+    colors {
+        background #32302f
+        statusline #ebdbb2
+        separator  #458588
+
+                           #border backgr. text
+        focused_workspace  #458588 #458588 #32302f
+        active_workspace   #32302f #83a598 #ebdbb2
+        inactive_workspace #32302f #32302f #ebdbb2
+        urgent_workspace   #fb4934 #fb4934 #32302f
+    }
+}
+
+# Autostart
+exec_always --no-startup-id "for f in $XDG_CONFIG_HOME/Xresources.d/*; do xrdb -merge $f; done"
+exec_always --no-startup-id "setxkbmap de"
+exec_always --no-startup-id "setxkbmap -option caps:escape"
+exec_always --no-startup-id "xsetroot -cursor_name left_ptr"
+exec_always --no-startup-id "feh --bg-scale ~/.config/i3/wallpaper"
+exec        --no-startup-id "compton"
+exec        --no-startup-id "unclutter -idle 2"
+exec        --no-startup-id "redshift"
+exec        --no-startup-id "dunst"
