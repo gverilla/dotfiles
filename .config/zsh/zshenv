@@ -1,0 +1,74 @@
+export BROWSER=google-chrome-stable
+export EDITOR=nvim
+
+# Set the systemd-style DBUS address
+export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
+
+# XDG directories
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_BIN_HOME=$HOME/.local/bin
+export XDG_LIB_HOME=$HOME/.local/lib
+export XDG_CACHE_HOME=$HOME/.cache
+
+export PATH="$XDG_BIN_HOME:$PATH"
+
+# XDG compliancy fixes
+# much of this is borrowed from `github.com/woegjiub/.config`
+export ANDROID_SDK_HOME="$XDG_DATA_HOME/android"
+export ATOM_HOME="$XDG_CONFIG_HOME/Atom"
+export GEM_PATH="$HOME/.local/bin"
+export GIT_SSH_COMMAND="ssh -F $XDG_CONFIG_HOME/ssh/config "$@" 2>/dev/null"
+export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
+export GRADLE_USER_HOME="$XDG_CACHE_HOME/gradle"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export HOMERC="$XDG_CONFIG_HOME/htop/htoprc"
+export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+export IPYTHONDIR="$XDG_CONFIG_HOME/ipython"
+export KDEDIR="$XDG_CONFIG_HOME/kde"
+export KDEHOME="$XDG_CONFIG_HOME/kde"
+export LESSHISTFILE="$XDG_DATA_HOME/less/history"
+export MYSQL_HISTFILE="$XDG_DATA_HOME/mysql/history"
+export npm_config_userconfig="$XDG_CONFIG_HOME/npm/npmrc"
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
+export PENTADACTYL_INIT=":source $XDG_CONFIG_HOME/pentadactyl/pentadactylrc"
+export PIP_CONFIG_FILE="$XDG_CONFIG_HOME/pip/pip.conf"
+export PIP_LOG_FILE="$XDG_DATA_HOME/pip/log"
+export PSQLRC="$XDG_CONFIG_HOME/psql/psqlrc"
+export PSQL_HISTORY="$XDG_DATA_HOME/psql/history"
+export PYLINTHOME="$XDG_DATA_HOME/pylint"
+export PYLINTRC="$XDG_CONFIG_HOME/pylint/pylintrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/python/pythonrc"
+export TERMINFO="$XDG_CONFIG_HOME/terminfo"
+export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
+export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
+export VIMPERATOR_INIT=":source $XDG_CONFIG_HOME/vimperator/vimperatorrc"
+export VIMPERATOR_RUNTIME="$XDG_CONFIG_HOME/vimperator"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export YADM_DIR="$XDG_DATA_HOME/yadm"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export ZGEN_DIR="$XDG_DATA_HOME/zgen"
+
+# Alias respecting programs
+alias ncmpcpp="ncmpcpp -c $XDG_CONFIG_HOME/ncmpcpp/config"
+alias scp="scp -F $XDG_CONFIG_HOME/ssh/config"
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+alias yadm="yadm -Y $YADM_DIR"
+
+if [ -s "$XDG_CONFIG_HOME/ssh/config" ]
+then
+    SSH_CONFIG="-F $XDG_CONFIG_HOME/ssh/config"
+fi
+if [ -s "$XDG_CONFIG_HOME/ssh/id_rsa" ]
+then
+    SSH_ID="-i $XDG_CONFIG_HOME/ssh/id_rsa"
+fi
+
+alias ssh="ssh $SSH_CONFIG $SSH_ID "
+alias ssh-copy-id="ssh-copy-id $SSH_ID"
+
+# other aliases
+alias rsync-copy="rsync -avz --progress -h"
+alias rsync-move="rsync -avz --progress -h --remove-source-files"
+alias rsync-update="rsync -avzu --progress -h"
+alias rsync-synchronize="rsync -avzu --delete --progress -h"
