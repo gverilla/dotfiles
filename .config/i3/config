@@ -22,7 +22,7 @@ bindsym $mod+Return           exec termite -e "tmux -f $XDG_CONFIG_HOME/tmux/tmu
 bindsym $mod+d                exec rofi -show run
 bindsym $mod+n                exec thunar
 bindsym $mod+l                exec i3lock-fancy -p
-bindsym Mod1+Shift+e          exec "i3-nagbar -t warning -m 'Do you really want to exit i3?' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym Mod1+Shift+e          exec exit_menu
 bindsym $mod+q                kill
 bindsym $mod+Shift+c          reload
 bindsym $mod+Shift+r          restart

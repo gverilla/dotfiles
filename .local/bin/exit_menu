@@ -1,0 +1,6 @@
+#!/bin/sh
+
+choice=$(echo -e "yes\nno"|rofi -dmenu -p "Exit i3?: ")
+if [ $choice = "yes" ]; then
+  i3-msg exit
+fi
