@@ -32,7 +32,7 @@ necessary environment variables and aliases.
 - **compton** (for eyecandy like fade-ins and tranparent windows)
 - **unclutter** (hides cursor after few seconds without movement)
 - **dunst** (for notification support)
-- **evopop-icon-theme**
+- **paper-icon-theme-git**
 - **numix-themes-darkblue**
 - **redshift** (tints everything redish, less eyestrain for sessions at night)
 
