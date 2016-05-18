@@ -1,6 +1,10 @@
 let &rtp.=",$XDG_CONFIG_HOME/vim"
 set viminfo="$XDG_CACHE_HOME/viminfo"
 
+" set leader (before plugins are loaded, so
+" their bindings are affected as well)
+let mapleader=","
+
 call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
   " Make sure you use single quotes
   Plug 'tpope/vim-sensible'
@@ -71,3 +75,4 @@ endfunction
 
 autocmd User GoyoEnter nested call <SID>goyo_enter()
 autocmd User GoyoLeave nested call <SID>goyo_leave()
+map <Leader>gg :Goyo<CR>
