@@ -19,6 +19,8 @@ call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
   Plug 'edkolev/tmuxline.vim'
   Plug 'chrisbra/SudoEdit.vim'
   Plug 'morhetz/gruvbox'
+  Plug 'vim-pandoc/vim-pandoc'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
 call plug#end()
 
 syntax on
