@@ -21,6 +21,7 @@ call plug#begin('$XDG_CONFIG_HOME/vim/plugged')
   Plug 'morhetz/gruvbox'
   Plug 'vim-pandoc/vim-pandoc'
   Plug 'vim-pandoc/vim-pandoc-syntax'
+  Plug 'lilydjwg/colorizer'
 call plug#end()
 
 syntax on
