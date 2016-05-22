@@ -4,3 +4,6 @@
 [submodule ".config/zsh/zgen"]
 	path = .config/zsh/zgen
 	url = https://github.com/tarjoilija/zgen
+[submodule ".local/share/lightsOn"]
+	path = .local/share/lightsOn
+	url = https://github.com/iye/lightsOn
