@@ -33,7 +33,7 @@ necessary environment variables and aliases.
 - **unclutter** (hides cursor after few seconds without movement)
 - **dunst** (for notification support)
 - **paper-icon-theme-git**
-- **numix-themes-darkblue**
+- **gtk-theme-arc**
 - **redshift** (tints everything redish, less eyestrain for sessions at night)
 
 ### utils
