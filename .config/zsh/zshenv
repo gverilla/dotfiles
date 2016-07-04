@@ -1,5 +1,6 @@
 export BROWSER=google-chrome-stable
 export EDITOR=nvim
+export TERMINAL='termite -e "tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"'
 
 # Set the systemd-style DBUS address
 export DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
