@@ -73,3 +73,4 @@ necessary environment variables and aliases.
 
 - **ttf-ms-fonts** (windows fonts, for better compatibility)
 - **powerline-fonts-git**
+
